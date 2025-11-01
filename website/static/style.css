@@ -22,152 +22,199 @@ body{
     padding: 30px;
 }
   
-.wrapper .title{
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 25px;
-    color: black;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Arial', Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    color: #222;
+    min-height: 100vh;
+}
+
+.wrapper {
+    max-width: 500px;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    margin: 40px auto 40px auto;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    border-radius: 18px;
+    padding: 40px 32px 32px 32px;
+    position: relative;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.wrapper .title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #3498db;
     text-transform: uppercase;
     text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(52,152,219,0.08);
 }
-  
-.wrapper .form{
+
+.form {
     width: 100%;
 }
-  
-.wrapper .form .inputfield{
-    margin-bottom: 15px;
+
+.inputfield {
+    margin-bottom: 18px;
     display: flex;
     align-items: center;
-}
-  
-.wrapper .form .inputfield label{
-     width: 200px;
-     color: black;
-     margin-right: 10px;
-    font-size: 14px;
+    gap: 10px;
 }
 
-.check{
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-around;
+.inputfield label {
+    width: 160px;
+    color: #34495e;
+    font-size: 15px;
+    font-weight: 600;
 }
 
-.check label{
-    padding: 0px 10px 0px 0px;
-}
-
-.wrapper .form .inputfield .input{
+.inputfield .input,
+.inputfield .custom_select select {
     width: 100%;
     outline: none;
-    border: 1px solid #d5dbd9;
-    font-size: 15px;
-    padding: 8px 10px;
-    border-radius: 3px;
+    border: 1.5px solid #d5dbd9;
+    font-size: 16px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: border-color 0.2s;
+    background: #f8faff;
 }
 
-.wrapper .form .inputfield .custom_select{
+.inputfield .input:focus,
+.inputfield .custom_select select:focus {
+    border-color: #3498db;
+}
+
+.custom_select {
     position: relative;
     width: 100%;
-    height: 37px;
-}
-  
-.wrapper .form .inputfield .custom_select:before{
-    position: absolute;
-    top: 12px;
-    right: 10px;
-}
-  
-.wrapper .form .inputfield .custom_select select{
-    width: 100%;
-    height: 100%;
-    border: 0px;
-    padding: 8px 10px;
-    font-size: 15px;
-    border: 1px solid #d5dbd9;
-    border-radius: 3px;
+    height: 40px;
 }
 
-.wrapper .form .inputfield .btn{
+.custom_select:before {
+    content: '\25BC';
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    color: #3498db;
+    pointer-events: none;
+}
+
+.btn, button {
     width: 100%;
-    padding: 8px 10px;
-    font-size: 15px; 
-    border: 0px;
-    background:  black;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    background: linear-gradient(90deg, #3498db 0%, #6dd5fa 100%);
     color: #fff;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 8px;
     outline: none;
+    box-shadow: 0 2px 8px rgba(52,152,219,0.08);
+    transition: background 0.2s, transform 0.1s;
 }
-  
-.result p{
+
+.btn:hover, button:hover {
+    background: linear-gradient(90deg, #2980b9 0%, #3498db 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.check {
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.check label {
+    padding-right: 10px;
+    color: #34495e;
+    font-weight: 500;
+}
+
+.result p {
     text-align: center;
-    color: blue;
-    font-size: 18px;
+    color: #27ae60;
+    font-size: 1.2rem;
     font-weight: bold;
+    margin-top: 18px;
+    letter-spacing: 1px;
 }
 
-/* Add styles for the header */
 header {
-    background-color: #f8f9fa;
-    padding: 10px;
+    background: linear-gradient(90deg, #6dd5fa 0%, #3498db 100%);
+    color: #fff;
+    padding: 18px 0 12px 0;
     text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    box-shadow: 0 2px 8px rgba(52,152,219,0.08);
 }
 
-/* Add styles for the footer */
 footer {
-    background-color: #2c3e50;
-    color: white;
+    background: linear-gradient(90deg, #3498db 0%, #6dd5fa 100%);
+    color: #fff;
     text-align: center;
-    padding: 10px 0;
+    padding: 14px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 -2px 8px rgba(52,152,219,0.08);
 }
 
-/* General body styles */
-body {
-    background-color: #f4f4f4;
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Header styles */
 h1, h2, h3 {
-    color: #2c3e50;
+    color: #3498db;
+    margin-bottom: 10px;
 }
 
-/* Link styles */
 a {
     color: #3498db;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 a:hover {
+    color: #2980b9;
     text-decoration: underline;
 }
 
-/* Button styles */
-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-/* Layout styles */
 .container {
-    width: 80%;
+    width: 90%;
+    max-width: 1200px;
     margin: auto;
     overflow: hidden;
+}
+
+/* Add a subtle hover effect for input fields */
+.inputfield .input:hover,
+.inputfield .custom_select select:hover {
+    background: #eaf6fb;
+}
+
+/* Add a card effect for result */
+.result {
+    background: #f8faff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(52,152,219,0.08);
+    padding: 18px;
+    margin-top: 20px;
 }
 
 
