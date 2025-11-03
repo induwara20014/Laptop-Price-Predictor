@@ -16,8 +16,8 @@ def prediction(lst):
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    # return "Hello World"
-    pred_value = 0
+    pred_value = None  # No prediction at start
+
     if request.method == 'POST':
         ram = request.form.get('ram')
         weight = request.form.get('weight')
@@ -28,9 +28,12 @@ def index():
         gpu = request.form.get('gpuname')
         touchscreen = request.form.getlist('touchscreen')
         ips = request.form.getlist('ips')
-        
-        feature_list = []
 
+        # Check for empty form fields
+        if not all([ram, weight, company, typename, opsys, cpu, gpu]):
+            return render_template('index.html', error="Please fill all required fields")
+
+        feature_list = []
         feature_list.append(int(ram))
         feature_list.append(float(weight))
         feature_list.append(len(touchscreen))
@@ -42,19 +45,14 @@ def index():
         cpu_list = ['amd','intelcorei3','intelcorei5','intelcorei7','other']
         gpu_list = ['amd','intel','nvidia']
 
-        # for item in company_list:
-        #     if item == company:
-        #         feature_list.append(1)
-        #     else:
-        #         feature_list.append(0)
-
+        # Helper to encode categories
         def traverse_list(lst, value):
             for item in lst:
                 if item == value:
                     feature_list.append(1)
                 else:
                     feature_list.append(0)
-        
+
         traverse_list(company_list, company)
         traverse_list(typename_list, typename)
         traverse_list(opsys_list, opsys)
@@ -63,13 +61,15 @@ def index():
 
         try:
             pred_value = prediction(feature_list)
+            print("\n✅ Prediction array (raw output):", pred_value)  # <-- PRINT IN TERMINAL
             pred_value = np.round(pred_value[0], 2) * 221
+            print("💰 Final calculated value:", pred_value, "\n")     # <-- ALSO PRINT IN TERMINAL
         except Exception as e:
             return render_template('index.html', error=f"Prediction error: {str(e)}")
 
-    if not all([ram, weight, company, typename, opsys, cpu, gpu]):
-        return render_template('index.html', error="Please fill all required fields")
+        return render_template('index.html', pred_value=pred_value)
 
+    # For GET request — just render the page
     return render_template('index.html', pred_value=pred_value)
 
 
