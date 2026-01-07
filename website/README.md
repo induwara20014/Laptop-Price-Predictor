@@ -78,7 +78,3 @@ A Flask web application that predicts laptop prices based on user-specified spec
 ## Contributing
 
 Feel free to contribute by submitting issues or pull requests to improve the application.
-
-## License
-
-This project is for educational purposes. Check individual licenses for dependencies.
