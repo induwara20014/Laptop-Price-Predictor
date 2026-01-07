@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import sys
 
 import pandas as pd
 
@@ -100,6 +101,10 @@ data.head(2)
 
 data.shape
 
+print("Columns:", data.columns.tolist())
+
+sys.exit()
+
 x = data.drop('Price_euros', axis=1)
 y = data['Price_euros']
 
@@ -148,5 +153,3 @@ with open('predictor.pickle','wb') as file:
     pickle.dump(best_model, file)
 
 x_train.columns
-
-best_model.predict([[8,1.3,1,1,0,1,0,1,0,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,1,0,1,0,0]])
